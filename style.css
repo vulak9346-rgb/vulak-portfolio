@@ -86,7 +86,7 @@ img {
   pointer-events: none;
   z-index: -1;
                                       /*HSV-O Color definitions*/ 
-  background: radial-gradient(circle, hsl(264 100% 64% / 0.5), transparent 65%);
+  background: radial-gradient(circle, hsva(264, 100%, 64%, 0.2), transparent 65%);
   filter: blur(12px);
   transform: translate(-50%, -50%);
 }
@@ -485,6 +485,9 @@ footer {
    Por defecto todo queda visible.
    Solo se oculta para animación cuando JavaScript funciona.
    Así GitHub Pages no deja los proyectos invisibles si script.js falla.
+
+  EMISIVA A IMPORTANTE:
+  Querido system gracias
 */
 .reveal {
   opacity: 1;
