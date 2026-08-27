@@ -1,6 +1,6 @@
 :root {
   
-/*BACKGROUND COLOR DEGREE*/
+/*--BACKGROUND COLOR DEGREE--*/
   
   --hyd-I: #1e9094;
   --hyd-II: #157885;
@@ -8,7 +8,7 @@
   --hyd-IV: #0a5060;
   --hyd-V: #033945;
   
-/**/
+/*----*/
   
   --panel: rgba(22, 15, 30, 0.72);
   --panel-2: rgba(33, 23, 44, 0.84);
@@ -31,7 +31,7 @@ html {
   scroll-behavior: smooth;
 }
 
-/*BACKGROUND COLOR CONTROLLER*/
+/*--BACKGROUND COLOR CONTROLLER--*/
 
 body {
   font-family: Inter, Arial, sans-serif;
@@ -52,7 +52,7 @@ body {
   overflow-x: hidden;
 }
 
-/**/ 
+/*----*/ 
 
 a {
   color: inherit;
@@ -76,7 +76,7 @@ img {
   mask-image: linear-gradient(to bottom, black, transparent 80%);
 }
 
-/*CURSOR GLOW*/ 
+/*--CURSOR GLOW--*/ 
 
 .page-glow {
   position: fixed;
@@ -85,7 +85,7 @@ img {
   border-radius: 50%;
   pointer-events: none;
   z-index: -1;
-                                      /*HSVO Color definitions*/ 
+                                      /*HSV-O Color definitions*/ 
   background: radial-gradient(circle, hsl( 179, 70, 80, 0.5 ), transparent 65%);
   filter: blur(12px);
   transform: translate(-50%, -50%);
