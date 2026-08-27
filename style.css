@@ -85,8 +85,8 @@ img {
   border-radius: 50%;
   pointer-events: none;
   z-index: -1;
-                                      /*HSV-O Color definitions*/ 
-  background: radial-gradient(circle, hsva(264, 100%, 64%, 0.2), transparent 65%);
+                                      /*RGBA Color definitions*/ 
+  background: radial-gradient(circle, rgba(63, 204, 64, 0.5), transparent 65%);
   filter: blur(12px);
   transform: translate(-50%, -50%);
 }
