@@ -1,11 +1,15 @@
 :root {
-/*Background color degree*/
+  
+/*BACKGROUND COLOR DEGREE*/
+  
   --hyd-I: #1e9094;
   --hyd-II: #157885;
   --hyd-III: #0f6270;
   --hyd-IV: #0a5060;
   --hyd-V: #033945;
+  
 /**/
+  
   --panel: rgba(22, 15, 30, 0.72);
   --panel-2: rgba(33, 23, 44, 0.84);
   --text: #f2fff6;
@@ -26,7 +30,9 @@
 html {
   scroll-behavior: smooth;
 }
-/*Background color controller*/
+
+/*BACKGROUND COLOR CONTROLLER*/
+
 body {
   font-family: Inter, Arial, sans-serif;
   background:
@@ -45,7 +51,9 @@ body {
   line-height: 1.6;
   overflow-x: hidden;
 }
+
 /**/ 
+
 a {
   color: inherit;
   text-decoration: none;
@@ -68,6 +76,8 @@ img {
   mask-image: linear-gradient(to bottom, black, transparent 80%);
 }
 
+/*CURSOR GLOW*/ 
+
 .page-glow {
   position: fixed;
   width: 420px;
@@ -75,10 +85,13 @@ img {
   border-radius: 50%;
   pointer-events: none;
   z-index: -1;
-  background: radial-gradient(circle, rgba(144, 70, 255, 0.2), transparent 65%);
+                                      /*HSVO Color definitions*/ 
+  background: radial-gradient(circle, rgba( 179, 70, 80, 0.5 ), transparent 65%);
   filter: blur(12px);
   transform: translate(-50%, -50%);
 }
+
+/**/ 
 
 .hero {
   min-height: 100vh;
