@@ -86,7 +86,7 @@ img {
   pointer-events: none;
   z-index: -1;
                                       /*HSV-O Color definitions*/ 
-  background: radial-gradient(circle, hsl( 179 70% 80% / 0.5 ), transparent 65%);
+  background: radial-gradient(circle, hsl(264 100% 64% / 0.5), transparent 65%);
   filter: blur(12px);
   transform: translate(-50%, -50%);
 }
