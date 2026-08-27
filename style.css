@@ -86,7 +86,7 @@ img {
   pointer-events: none;
   z-index: -1;
                                       /*RGBA Color definitions*/ 
-  background: radial-gradient(circle, rgba(63, 204, 64, 0.5), transparent 65%);
+  background: radial-gradient(circle, rgba(63, 204, 203, 0.5), transparent 65%);
   filter: blur(12px);
   transform: translate(-50%, -50%);
 }
