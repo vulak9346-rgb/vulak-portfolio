@@ -460,3 +460,45 @@ camera.position.set(4, 3, 5);
     renderer.setSize(width, height);
   });
 });
+
+
+
+loaderInstance.load(
+  modelPath,
+  (gltf) => {
+    const model = gltf.scene;
+    
+    // --- CENTRAR Y AUTO-ESCALAR EL MODELO ---
+    const box = new THREE.Box3().setFromObject(model);
+    const center = box.getCenter(new THREE.Vector3());
+    const size = box.getSize(new THREE.Vector3());
+
+    // Centrar geometría
+    model.position.x -= center.x;
+    model.position.y -= center.y;
+    model.position.z -= center.z;
+
+    // Ajustar zoom de la cámara según el tamaño del modelo
+    const maxDim = Math.max(size.x, size.y, size.z);
+    camera.position.set(0, maxDim * 0.5, maxDim * 2.5);
+    camera.lookAt(0, 0, 0);
+
+    group.add(model);
+
+    // Ocultar texto de carga
+    if (loader) {
+      loader.style.opacity = "0";
+      setTimeout(() => loader.remove(), 400);
+    }
+  },
+  (xhr) => {
+    if (xhr.total) {
+      const percent = (xhr.loaded / xhr.total) * 100;
+      if (loader) loader.textContent = `Loading 3D Asset... ${Math.round(percent)}%`;
+    }
+  },
+  (error) => {
+    console.error("Error al cargar el modelo 3D:", error);
+    if (loader) loader.textContent = "Error loading model file (Check Console).";
+  }
+);
