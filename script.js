@@ -320,13 +320,8 @@ document.addEventListener("DOMContentLoaded", () => {
   // Escena, Cámara y Renderizador
   const scene = new THREE.Scene();
   
-  const camera = new THREE.PerspectiveCamera(
-    45,
-    container.clientWidth / container.clientHeight,
-    0.1,
-    1000
-  );
-  camera.position.set(4, 3, 5);
+const camera = new THREE.PerspectiveCamera(45, container.clientWidth / container.clientHeight, 0.1, 1000);
+camera.position.set(4, 3, 5);
 
   const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
   renderer.setSize(container.clientWidth, container.clientHeight);
@@ -353,7 +348,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Carga del modelo 3D real mediante GLTFLoader
   const loaderInstance = new THREE.GLTFLoader();
-  const modelPath = 'hydra_material/models/mannequin_v2.glb';
+  const modelPath = 'hydra_material/models/mannequin_v2.glb'; 
 
   loaderInstance.load(
     modelPath,
