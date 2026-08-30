@@ -353,7 +353,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Carga del modelo 3D real mediante GLTFLoader
   const loaderInstance = new THREE.GLTFLoader();
-  const modelPath = 'hydra_material/models/mannequin_v2.glb'; 
+  const modelPath = 'hydra_material/models/mannequin_v2.glb';
 
   loaderInstance.load(
     modelPath,
