@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js"></script>
+
+  <title>Vulak/Rex | Minecraft Bedrock Artist</title>
+  <meta
+    name="description"
+    content="Portfolio of Vulak/Rex, Minecraft Bedrock Addon Developer and 3D Artist creating custom models, items, blocks, and add-ons."
+  />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap"
+    rel="stylesheet"
+  >
+  <link rel="icon" type="image/png" href=".hydra_head_portfolio/hydra_material/vulak_pfp.png">
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <div class="noise"></div>
+  <div class="page-glow"></div>
+  
+  <header class="hero" id="home">
+    <nav class="navbar reveal">
+      <a class="logo" href="#home">
+        <img class="logo-img" src=".hydra_head_portfolio/hydra_material/vulak_pfp.png" alt="Hydra Team logo">
+        Vulak/Rex | Minecraft Bedrock Artist
+      </a>
+
+      <div class="nav-links">
+        <a href="#showcase">Showcase</a>
+        <a href="#interactive-model">3D Preview</a>
+        <a href="#projects">Projects</a>
+        <a href="#marketplace">Marketplace</a>
+        <a href="#mcmodels">McModels</a>
+        <a href="#skills">Skills</a>
+        <a href="#process">Process</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </nav>
+
+    <!-- TITLE -->
+    <section class="hero-content reveal">
+      <div class="hero-left">
+        <p class="tag">Minecraft artist</p>
+
+        <h1>Hydra.</h1>
+
+        <p class="hero-text">
+          I create gameplay systems, custom interfaces, configuration menus, tools, items, blocks,
+          entities, and polished add-ons designed for real players and public releases.
+        </p>
+
+        <!-- INFO -->
+        <div class="hero-buttons">
+          <a href="#projects" class="btn primary">View Projects</a>
+          <a href="#contact" class="btn secondary">Work With Me</a>
+        </div>
+
+        <div class="stats">
+          <div>
+            <strong>2024</strong>
+            <span>Addon maker since</span>
+          </div>
+
+          <div>
+            <strong>30+</strong>
+            <span>Published projects</span>
+          </div>
+
+          <div>
+            <strong>Bedrock</strong>
+            <span>Main platform</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- CARD -->
+      <aside class="hero-card tilt-card" aria-label="Developer profile card">
+        <img src="./img/logo.png" height="80" width="80" alt="Hydra Team logo">
+
+        <h2>Vulak/Rex</h2>
+
+        <p>
+          Gameplay systems • Custom UI • Custom Items • Survival mechanics • Custom Blocks • Custom Entities
+        </p>
+
+        <div class="mini-grid">
+          <span>Scripts</span>
+          <span>UI</span>
+          <span>Items</span>
+          <span>Blocks</span>
+          <span>Entities</span>
+          <span>Mechanics</span>
+        </div>
+      </aside>
+    </section>
+  </header>
+
+  <main>
+    <!-- ABOUT ME -->
+    <section class="section about reveal">
+      <div>
+        <p class="section-tag">About Me</p>
+        <h2>I turn addon ideas into playable systems.</h2>
+      </div>
+
+      <p>
+        I’m a Minecraft Bedrock addon creator focused on features that feel useful, clean, and natural
+        inside the game. My work includes scripted mechanics, custom entities, custom UI,
+        custom mechanics, custom items, custom blocks, compatibility improvements, bug fixing,
+        and project updates based on player feedback.
+      </p>
+    </section>
+
+    <!-- SKILLS -->
+    <section id="skills" class="section reveal">
+      <p class="section-tag">Skills</p>
+      <h2>What I work with</h2>
+
+      <div class="skills-grid">
+        <div class="skill-card">
+          <span>01</span>
+          <h3>Bedrock Add-ons</h3>
+          <p>Gameplay packs, behavior packs, resource packs, items, blocks, tools, entities, and systems.</p>
+        </div>
+
+        <div class="skill-card">
+          <span>02</span>
+          <h3>Scripted Mechanics</h3>
+          <p>Custom logic, survival systems, player interactions, statistics, and configuration behavior.</p>
+        </div>
+
+        <div class="skill-card">
+          <span>03</span>
+          <h3>Custom UI</h3>
+          <p>Configuration menus, addon books, interface textures, forms, and player-friendly settings.</p>
+        </div>
+
+        <div class="skill-card">
+          <span>04</span>
+          <h3>Optimization</h3>
+          <p>Bug fixing, compatibility improvements, cleaner updates, and better user experience.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- INTERACTIVE 3D MODEL VIEWER -->
+    <section id="interactive-model" class="section reveal">
+      <div class="section-heading">
+        <div>
+          <p class="section-tag">Interactive Preview</p>
+          <h2>Inspect the Model in 3D</h2>
+        </div>
+      </div>
+
+      <div class="model-container-wrapper" style="grid-template-columns: 1fr;">
+        <div id="canvas-3d-container" class="tilt-card" style="height: 950px;">
+          <div id="model-loader">Loading 3D Asset...</div>
+        </div>
+      </div>
+    </section>
+    <!-- ART SHOWCASE -->
+<!-- ART SHOWCASE -->
+    <section id="showcase" class="section reveal">
+      <div class="section-heading">
+        <div>
+          <p class="section-tag">Visual Work</p>
+          <h2>Showcase</h2>
+        </div>
+      </div>
+
+      <div class="showcase-layout">
+        <!-- Columna Izquierda: Menú de Categorías -->
+        <div class="categories-menu">
+          
+          <!-- Categoría I: Weapon models -->
+          <div class="category-item">
+            <button class="category-header" type="button">
+              <div class="category-title-group">
+                <img src="./hydra_material/placeholders/blockbench_placeholder.png" alt="Icon" class="category-icon">
+                <span>Weapon models</span>
+              </div>
+              <span class="arrow">▼</span>
+            </button>
+            <div class="category-content">
+              <div class="mini-gallery" id="weapons-gallery">
+                <img src="./hydra_material/placeholders/blockbench_placeholder.png" alt="Weapon Model 1" class="gallery-thumb" data-full="./hydra_material/placeholders/blockbench_placeholder.png" data-title="Weapon Model #1">
+              </div>
+            </div>
+          </div>
+
+          <!-- Categoría II: Armor models -->
+          <div class="category-item">
+            <button class="category-header" type="button">
+              <div class="category-title-group">
+                <img src="./hydra_material/placeholders/blockbench_placeholder.png" alt="Icon" class="category-icon">
+                <span>Armor models</span>
+              </div>
+              <span class="arrow">▼</span>
+            </button>
+            <div class="category-content">
+              <div class="mini-gallery" id="armor-gallery">
+                <img src="./hydra_material/placeholders/blockbench_placeholder.png" alt="Armor Model 1" class="gallery-thumb" data-full="./hydra_material/placeholders/blockbench_placeholder.png" data-title="Armor Model #1">
+              </div>
+            </div>
+          </div>
+
+          <!-- Categoría III: Entity models -->
+          <div class="category-item">
+            <button class="category-header" type="button">
+              <div class="category-title-group">
+                <img src="./hydra_material/placeholders/blockbench_placeholder.png" alt="Icon" class="category-icon">
+                <span>Entity models</span>
+              </div>
+              <span class="arrow">▼</span>
+            </button>
+            <div class="category-content">
+              <div class="mini-gallery" id="entity-gallery">
+                <img src="./hydra_material/placeholders/blockbench_placeholder.png" alt="Entity Model 1" class="gallery-thumb" data-full="./hydra_material/placeholders/blockbench_placeholder.png" data-title="Entity Model #1">
+              </div>
+            </div>
+          </div>
+
+          <!-- Categoría IV: Block models -->
+          <div class="category-item">
+            <button class="category-header" type="button">
+              <div class="category-title-group">
+                <img src="./hydra_material/placeholders/blockbench_placeholder.png" alt="Icon" class="category-icon">
+                <span>Block models</span>
+              </div>
+              <span class="arrow">▼</span>
+            </button>
+            <div class="category-content">
+              <div class="mini-gallery" id="block-gallery">
+                <img src="./hydra_material/placeholders/blockbench_placeholder.png" alt="Block Model 1" class="gallery-thumb" data-full="./hydra_material/placeholders/blockbench_placeholder.png" data-title="Block Model #1">
+              </div>
+            </div>
+          </div>
+
+          <!-- Categoría V: Animations -->
+          <div class="category-item">
+            <button class="category-header" type="button">
+              <div class="category-title-group">
+                <img src="./hydra_material/placeholders/blockbench_placeholder.png" alt="Icon" class="category-icon">
+                <span>Animations</span>
+              </div>
+              <span class="arrow">▼</span>
+            </button>
+            <div class="category-content">
+              <div class="mini-gallery" id="animation-gallery">
+                <img src="./hydra_material/placeholders/blockbench_placeholder.png" alt="Animation 1" class="gallery-thumb" data-full="./hydra_material/placeholders/blockbench_placeholder.png" data-title="Animation #1">
+              </div>
+            </div>
+          </div>
+
+          <!-- Categoría VI: Skins -->
+          <div class="category-item">
+            <button class="category-header" type="button">
+              <div class="category-title-group">
+                <img src="./hydra_material/placeholders/blockbench_placeholder.png" alt="Icon" class="category-icon">
+                <span>Skins</span>
+              </div>
+              <span class="arrow">▼</span>
+            </button>
+  
+            <div class="category-content">
+              <div class="mini-gallery" id="skins-gallery">
+                <!-- Elemento 1 -->
+                <img src="./hydra_material/artwork/artwork_skins/png/skin_vulak_light.png" 
+                     alt="Skin I | Vulak light" 
+                     class="gallery-thumb" 
+                     data-video="./hydra_material/artwork/artwork_skins/mp4/skin_vulak_light.mp4" 
+                     data-title="Skin #1 - Animación Principal">
+
+                <!-- Elemento 2 -->
+                <img src="./hydra_material/artwork/artwork_skins/png/skin_vulak_dark.png" 
+                     alt="Skin II | Vulak dark" 
+                     class="gallery-thumb" 
+                     data-video="./hydra_material/artwork/artwork_skins/mp4/skin_vulak_dark.mp4" 
+                     data-title="Skin #2 - Animación de Ataque">
+
+                <!-- Elemento 3 -->
+                <img src="./hydra_material/artwork/artwork_skins/png/skin_REDACTED.png" 
+                     alt="Skin III | REDACTED" 
+                     class="gallery-thumb" 
+                     data-video="./hydra_material/artwork/artwork_skins/mp4/skin_REDACTED.mp4" 
+                     data-title="Skin #3 - Animación de Caminata">
+              </div>
+            </div>
+          </div>
+
+        </div> <!-- Cierra .categories-menu -->
+
+        <!-- Columna Derecha: Imagen Destacada (o reproductor de video) -->
+        <div class="showcase-preview">
+          <img id="preview-img" src="./hydra_material/void.png" alt="Preview">
+        </div>
+
+      </div> <!-- Cierra .showcase-layout (ESTO FALTABA) -->
+
+      <!-- Modal de pantalla completa -->
+      <div id="image-modal" class="modal">
+        <span class="modal-close">&times;</span>
+        <img class="modal-content" id="modal-img" alt="Zoomed view">
+        <div id="modal-caption"></div>
+      </div>
+    </section>
+    <!-- PERSONAL PROJECTS -->
+    <section id="projects" class="section reveal">
+      <div class="section-heading">
+        <div>
+          <p class="section-tag">Personal Work</p>
+          <h2>Featured Personal Add-ons</h2>
+        </div>
+      </div>
+
+      <div class="projects-grid">
+        <a class="project-card tilt-card" href="https://www.curseforge.com/minecraft-bedrock/addons/system-dynamic-lights" target="_blank" rel="noopener noreferrer">
+          <img class="portada" src="./hydra_material/placeholders/curseforge_placeholder.png" alt="Dynamic Light addon cover">
+          <h3>Dynamic Light</h3>
+          <p>A lighting system focused on exploration, mining, and survival quality of life.</p>
+          <span>Lighting • Survival • Utility</span>
+        </a>
+
+        <a class="project-card tilt-card" href="https://www.curseforge.com/minecraft-bedrock/addons/definitive-tree-capitator-addon" target="_blank" rel="noopener noreferrer">
+          <img class="portada" src="./hydra_material/placeholders/curseforge_placeholder.png" alt="Definitive Tree Capitator addon cover">
+          <h3>Definitive Tree Capitator</h3>
+          <p>Tree cutting with custom configuration, UI, statistics, and player-friendly options.</p>
+          <span>Utility • Forestry • Mechanics</span>
+        </a>
+
+        <a class="project-card tilt-card" href="https://www.curseforge.com/minecraft-bedrock/addons/torch-offhand-addon" target="_blank" rel="noopener noreferrer">
+          <img class="portada" src="./hydra_material/placeholders/curseforge_placeholder.png" alt="Torch Offhand addon cover">
+          <h3>Torch Offhand</h3>
+          <p>Offhand torch mechanics with configurable behavior and custom interface design.</p>
+          <span>Utility • Survival • Mechanics</span>
+        </a>
+
+        <a class="project-card tilt-card" href="https://www.curseforge.com/minecraft-bedrock/addons/stonetombs-addon" target="_blank" rel="noopener noreferrer">
+          <img class="portada" src="./hydra_material/placeholders/curseforge_placeholder.png" alt="StoneTombs addon cover">
+          <h3>StoneTombs</h3>
+          <p>A tomb system with visual config, custom UI, zombie options, and survival features.</p>
+          <span>Survival • Death • Mechanics</span>
+        </a>
+
+        <a class="project-card tilt-card" href="https://www.curseforge.com/minecraft-bedrock/addons/blockarmor-addon" target="_blank" rel="noopener noreferrer">
+          <img class="portada" src="./hydra_material/placeholders/curseforge_placeholder.png" alt="Block Armor addon cover">
+          <h3>Block Armor</h3>
+          <p>Armor based on blocks, designed for visual variety and fun Minecraft-style gameplay.</p>
+          <span>Armor • Equipment • Survival</span>
+        </a>
+
+        <a class="project-card tilt-card" href="https://www.curseforge.com/minecraft-bedrock/addons/mininghammers-addon" target="_blank" rel="noopener noreferrer">
+          <img class="portada" src="./hydra_material/placeholders/curseforge_placeholder.png" alt="Hammer Time addon cover">
+          <h3>Hammer Time</h3>
+          <p>Expanded tools and mining gameplay through hammer mechanics and custom tool behavior.</p>
+          <span>Tools • Mining • Mechanics</span>
+        </a>
+
+        <a class="project-card tilt-card" href="https://www.curseforge.com/minecraft-bedrock/addons/definitive-ore-miner-addon" target="_blank" rel="noopener noreferrer">
+          <img class="portada" src="./hydra_material/placeholders/curseforge_placeholder.png" alt="Ore Miner addon cover">
+          <h3>Ore Miner</h3>
+          <p>A mining utility inspired by vein mining, built to make ore collection faster and cleaner.</p>
+          <span>Mining • Utility • Mechanics</span>
+        </a>
+
+        <a class="project-card tilt-card" href="https://www.curseforge.com/minecraft-bedrock/addons/systemcrossbow" target="_blank" rel="noopener noreferrer">
+          <img class="portada" src="./hydra_material/placeholders/curseforge_placeholder.png" alt="System Crossbow addon cover">
+          <h3>System Crossbow</h3>
+          <p>Multiple custom crossbows with unique mechanics and combat-focused gameplay.</p>
+          <span>Combat • Weapons • Ranged</span>
+        </a>
+        
+        <a class="project-card tilt-card" href="https://www.curseforge.com/minecraft-bedrock/addons/life-increase-addon" target="_blank" rel="noopener noreferrer">
+          <img class="portada" src="./hydra_material/placeholders/curseforge_placeholder.png" alt="Life Increase addon cover">
+          <h3>Life Increase</h3>
+          <p>Extra hearts and survival progression for players who want stronger long-term growth.</p>
+          <span>Progression • Survival • Utility</span>
+        </a>
+        
+        <a class="project-card tilt-card" href="https://www.curseforge.com/minecraft-bedrock/addons/expansive-ores-addon" target="_blank" rel="noopener noreferrer">
+          <img class="portada" src="./hydra_material/placeholders/curseforge_placeholder.png" alt="Expansive Ores addon cover">
+          <h3>Expansive Ores</h3>
+          <p>Discover dozens of new ores, armors, tools, and materials to expand your survival experience.</p>
+          <span>Mining • Ores • Progression</span>
+        </a>
+      </div>
+    </section>
+
+    <!-- PERSONAL PLUGINS -->
+    <section id="plugins" class="section reveal">
+      <div class="section-heading">
+        <div>
+          <p class="section-tag">Personal Work</p>
+          <h2>Featured Personal Plugins</h2>
+        </div>
+      </div>
+
+      <div class="projects-grid">
+        <a class="project-card tilt-card" href="#" target="_blank" rel="noopener noreferrer">
+          <img class="portada" src="./hydra_material/placeholders/mcmodels_placeholder.png" alt="Plugin cover">
+          <h3>Custom Java Plugin 1</h3>
+          <p>High performance server plugin configuration and custom blocks integration.</p>
+          <span>Java • Server • Mechanics</span>
+        </a>
+      </div>
+    </section>
+
+    <!-- MARKETPLACE -->
+    <section id="marketplace" class="section reveal">
+      <div class="section-heading">
+        <div>
+          <p class="section-tag">Client Work</p>
+          <h2>Marketplace contributions</h2>
+        </div>
+      </div> 
+      <p class="section-intro">
+        Over time, my models have been a contribution to some marketplace projects mainly as a modeler.
+      </p>
+      
+      <div class="projects-grid">
+        <a class="project-card tilt-card" href="https://www.minecraft.net/es-es/marketplace/pdp/honeyfrost/boss-expansion/70c45b79-0478-42dc-bdbf-e7feadd4dba1" target="_blank" rel="noopener noreferrer">
+          <img class="portada" src="./hydra_material/thumbnails/marketplace_contributions/eternal_caves_thumbnail.png" alt="Boss Expansion Marketplace project cover">
+          <h3>Eternal caves</h3>
+          <p>Eternal caves.</p>
+          <span>Work contribution: Modeler (Armor sets)</span>
+        </a>
+        
+        <a class="project-card tilt-card" href="https://www.minecraft.net/es-es/marketplace/pdp/honeyfrost/mythic-mobs/0d801c98-d04c-4207-b000-2500d1206d1b" target="_blank" rel="noopener noreferrer">
+          <img class="portada" src="./hydra_material/thumbnails/marketplace_contributions/ore_armor_expansion_thumbnail.png" alt="Mythic Mobs Marketplace project cover">
+          <h3>Ore armor expansion</h3>
+          <p>Ore armor expansion.</p>
+          <span>Work contribution: Modeler (Armor sets)</span>
+        </a>
+
+        <a class="project-card tilt-card" href="https://www.minecraft.net/es-es/marketplace/pdp/honeyfrost/titanium-ore/5d1744d3-9227-4174-92db-26f17abce5b6" target="_blank" rel="noopener noreferrer">
+          <img class="portada" src="./hydra_material/thumbnails/marketplace_contributions/legendary_armors_thumbnail.png" alt="Titanium Ore Marketplace project cover">
+          <h3>Legendary armors</h3>
+          <p>Legendary armors.</p>
+          <span>Work contribution: Modeler (Armor sets)</span>
+        </a>
+      </div>
+    </section>
+
+    <!-- MCMODELS -->
+
+<section id="mcmodels" class="section reveal">
+      <div class="section-heading">
+        <div>
+          <p class="section-tag">Client Work</p>
+          <h2>McModels contributions</h2>
+        </div>
+      </div> 
+      <p class="section-intro">
+        Products and models distributed through McModels platform.
+      </p>
+      
+      <!-- Un único contenedor para todas las tarjetas -->
+      <div class="projects-grid">
+        <a class="project-card tilt-card" href="#" target="_blank" rel="noopener noreferrer">
+          <img class="portada" src="./hydra_material/thumbnails/mcmodels_contributions/gothic_armor_thumbnail.png" alt="McModels project cover">
+          <h3>Custom Weapon Pack</h3>
+          <p>High quality weapons ready for Java & Bedrock integration.</p>
+          <span>Work contribution: Modeler & Texturer</span>
+        </a>
+
+        <a class="project-card tilt-card" href="#" target="_blank" rel="noopener noreferrer">
+          <img class="portada" src="./hydra_material/thumbnails/mcmodels_contributions/dark_emerald_thumbnail.png" alt="McModels project cover">
+          <h3>Custom Weapon Pack</h3>
+          <p>High quality weapons ready for Java & Bedrock integration.</p>
+          <span>Work contribution: Modeler & Texturer</span>
+        </a>
+
+        <a class="project-card tilt-card" href="#" target="_blank" rel="noopener noreferrer">
+          <img class="portada" src="./hydra_material/thumbnails/mcmodels_contributions/gilded_tungsten_thumbnail.png" alt="McModels project cover">
+          <h3>Custom Weapon Pack</h3>
+          <p>High quality weapons ready for Java & Bedrock integration.</p>
+          <span>Work contribution: Modeler & Texturer</span>
+        </a>
+
+        <a class="project-card tilt-card" href="#" target="_blank" rel="noopener noreferrer">
+          <img class="portada" src="./hydra_material/thumbnails/mcmodels_contributions/aqua_weaponry_thumbnail.png" alt="McModels project cover">
+          <h3>Custom Weapon Pack</h3>
+          <p>High quality weapons ready for Java & Bedrock integration.</p>
+          <span>Work contribution: Modeler & Texturer</span>
+        </a>
+      </div>
+    </section>
+
+    <!-- ANOTHER PROJECTS -->
+<section id="mcmodels" class="section reveal">
+      <div class="section-heading">
+        <div>
+          <p class="section-tag">Client Work</p>
+          <h2>Other contributions</h2>
+        </div>
+      </div> 
+      <p class="section-intro">
+        Products and models distributed through McModels platform.
+      </p>
+      
+      <!-- Un único contenedor para todas las tarjetas -->
+      <div class="projects-grid">
+
+        <a class="project-card tilt-card" href="#" target="_blank" rel="noopener noreferrer">
+          <img class="portada" src="./hydra_material/thumbnails/project_contributions/goety-mod_thumbnail.png" alt="McModels project cover">
+          <h3>Custom Weapon Pack</h3>
+          <p>High quality weapons ready for Java & Bedrock integration.</p>
+          <span>Work contribution: Modeler & Texturer</span>
+        </a>
+
+        <a class="project-card tilt-card" href="#" target="_blank" rel="noopener noreferrer">
+          <img class="portada" src="./hydra_material/thumbnails/project_contributions/system_enchantements_thumbnail.png" alt="McModels project cover">
+          <h3>Custom Weapon Pack</h3>
+          <p>High quality weapons ready for Java & Bedrock integration.</p>
+          <span>Work contribution: Modeler & Texturer</span>
+        </a>
+
+        <a class="project-card tilt-card" href="#" target="_blank" rel="noopener noreferrer">
+          <img class="portada" src="./hydra_material/thumbnails/project_contributions/system_shield_thumbnail.png" alt="McModels project cover">
+          <h3>Custom Weapon Pack</h3>
+          <p>High quality weapons ready for Java & Bedrock integration.</p>
+          <span>Work contribution: Modeler & Texturer</span>
+        </a>
+
+        <a class="project-card tilt-card" href="#" target="_blank" rel="noopener noreferrer">
+          <img class="portada" src="./hydra_material/thumbnails/project_contributions/system_wyverns_thumbnail.png" alt="McModels project cover">
+          <h3>Custom Weapon Pack</h3>
+          <p>High quality weapons ready for Java & Bedrock integration.</p>
+          <span>Work contribution: Modeler & Texturer</span>
+        </a>
+
+        <a class="project-card tilt-card" href="#" target="_blank" rel="noopener noreferrer">
+          <img class="portada" src="./hydra_material/thumbnails/project_contributions/rise_of_the_wyverns_thumbnail.png" alt="McModels project cover">
+          <h3>Custom Weapon Pack</h3>
+          <p>High quality weapons ready for Java & Bedrock integration.</p>
+          <span>Work contribution: Modeler & Texturer</span>
+        </a>
+
+        <a class="project-card tilt-card" href="#" target="_blank" rel="noopener noreferrer">
+          <img class="portada" src="./hydra_material/thumbnails/project_contributions/system_minotaur_thumbnail.png" alt="McModels project cover">
+          <h3>Custom Weapon Pack</h3>
+          <p>High quality weapons ready for Java & Bedrock integration.</p>
+          <span>Work contribution: Modeler & Texturer</span>
+        </a>
+
+        <a class="project-card tilt-card" href="#" target="_blank" rel="noopener noreferrer">
+          <img class="portada" src="./hydra_material/thumbnails/project_contributions/the-beginning-and-heaven_thumbnail.png" alt="McModels project cover">
+          <h3>Custom Weapon Pack</h3>
+          <p>High quality weapons ready for Java & Bedrock integration.</p>
+          <span>Work contribution: Modeler & Texturer</span>
+        </a>
+
+      </div>
+    </section>
+
+    <!-- WORKFLOW -->
+    <section id="process" class="section reveal">
+      <p class="section-tag">Workflow</p>
+      <h2>How I usually do my models</h2>
+
+      <div class="timeline">
+        <div>
+          <span></span>
+          <h3>Idea & Concept definition</h3>
+          <p>You give me the idea, the format, and what it's for, and I'll adjust it to your needs as much as possible.</p>
+        </div>
+
+        <div>
+          <span></span>
+          <h3>Model sketch</h3>
+          <p>Once the idea is defined, I'll make you a simple sketch of the model and its main structure, and you can tell me what you think.</p>
+        </div>
+
+        <div>
+          <span></span>
+          <h3>Final details</h3>
+          <p>Once you give me your feedback, I'll finalize the details and you'll have your model ready to add to your project.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="section contact reveal">
+      <p class="section-tag">Contact me</p>
+      <h2>Tell me what do you have in mind.</h2>
+
+      <p>
+        I'm open to bringing the ideas from your mind to your world, or even beyond.
+      </p>
+
+      <div class="contact-links">
+        <a href="https://stvaddons.lat" target="_blank" rel="noopener noreferrer">Website</a>
+        <a href="https://www.youtube.com/@systemtvreboot" target="_blank" rel="noopener noreferrer">YouTube</a>
+        <a href="https://www.curseforge.com/members/systemtv/projects" target="_blank" rel="noopener noreferrer">CurseForge</a>
+        <a href="mailto:systemtv.addons@gmail.com">Email</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2026 Vulak. Minecraft/Blockbench artist.</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
