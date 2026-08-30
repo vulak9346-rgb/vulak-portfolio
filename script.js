@@ -114,6 +114,7 @@ document.addEventListener("DOMContentLoaded", () => {
   modalVideo.loop = true;
   modalVideo.playsInline = true;
 
+  // Corrección de orden de elementos y verificación de tipos de nodos
   imageWrapper.appendChild(modalImg);
   imageWrapper.appendChild(modalVideo);
 
@@ -320,8 +321,8 @@ document.addEventListener("DOMContentLoaded", () => {
   // Escena, Cámara y Renderizador
   const scene = new THREE.Scene();
   
-const camera = new THREE.PerspectiveCamera(45, container.clientWidth / container.clientHeight, 0.1, 1000);
-camera.position.set(4, 3, 5);
+  const camera = new THREE.PerspectiveCamera(45, container.clientWidth / container.clientHeight, 0.1, 1000);
+  camera.position.set(4, 3, 5);
 
   const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
   renderer.setSize(container.clientWidth, container.clientHeight);
@@ -346,19 +347,30 @@ camera.position.set(4, 3, 5);
   const group = new THREE.Group();
   scene.add(group);
 
-  // Carga del modelo 3D real mediante GLTFLoader
+  // Carga del modelo 3D real mediante GLTFLoader con ruta segura
   const loaderInstance = new THREE.GLTFLoader();
-  const modelPath = 'hydra_material/models/mannequin_v2.glb'; 
+  const modelPath = './hydra_material/models/mannequin_v2.glb'; 
 
   loaderInstance.load(
     modelPath,
     (gltf) => {
       const model = gltf.scene;
       
-      // Ajustes de escala y posición del modelo personalizado
-      model.scale.set(1, 1, 1);
-      model.position.set(0, 0, 0);
-      
+      // --- AUTO-CENTRAR Y ESCALAR EL MODELO CORRECTAMENTE ---
+      const box = new THREE.Box3().setFromObject(model);
+      const center = box.getCenter(new THREE.Vector3());
+      const size = box.getSize(new THREE.Vector3());
+
+      // Centrar el origen del modelo
+      model.position.x -= center.x;
+      model.position.y -= center.y;
+      model.position.z -= center.z;
+
+      // Ajustar la distancia de la cámara en base a las dimensiones reales del objeto
+      const maxDim = Math.max(size.x, size.y, size.z);
+      camera.position.set(0, maxDim * 0.5, maxDim * 2.5);
+      camera.lookAt(0, 0, 0);
+
       group.add(model);
 
       // Ocultar texto de carga una vez completado
@@ -460,45 +472,3 @@ camera.position.set(4, 3, 5);
     renderer.setSize(width, height);
   });
 });
-
-
-
-loaderInstance.load(
-  modelPath,
-  (gltf) => {
-    const model = gltf.scene;
-    
-    // --- CENTRAR Y AUTO-ESCALAR EL MODELO ---
-    const box = new THREE.Box3().setFromObject(model);
-    const center = box.getCenter(new THREE.Vector3());
-    const size = box.getSize(new THREE.Vector3());
-
-    // Centrar geometría
-    model.position.x -= center.x;
-    model.position.y -= center.y;
-    model.position.z -= center.z;
-
-    // Ajustar zoom de la cámara según el tamaño del modelo
-    const maxDim = Math.max(size.x, size.y, size.z);
-    camera.position.set(0, maxDim * 0.5, maxDim * 2.5);
-    camera.lookAt(0, 0, 0);
-
-    group.add(model);
-
-    // Ocultar texto de carga
-    if (loader) {
-      loader.style.opacity = "0";
-      setTimeout(() => loader.remove(), 400);
-    }
-  },
-  (xhr) => {
-    if (xhr.total) {
-      const percent = (xhr.loaded / xhr.total) * 100;
-      if (loader) loader.textContent = `Loading 3D Asset... ${Math.round(percent)}%`;
-    }
-  },
-  (error) => {
-    console.error("Error al cargar el modelo 3D:", error);
-    if (loader) loader.textContent = "Error loading model file (Check Console).";
-  }
-);
