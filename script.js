@@ -114,7 +114,6 @@ document.addEventListener("DOMContentLoaded", () => {
   modalVideo.loop = true;
   modalVideo.playsInline = true;
 
-  // Corrección de orden de elementos y verificación de tipos de nodos
   imageWrapper.appendChild(modalImg);
   imageWrapper.appendChild(modalVideo);
 
@@ -318,7 +317,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   if (!container) return;
 
-  // Escena, Cámara y Renderizador
   const scene = new THREE.Scene();
   
   const camera = new THREE.PerspectiveCamera(45, container.clientWidth / container.clientHeight, 0.1, 1000);
@@ -331,7 +329,6 @@ document.addEventListener("DOMContentLoaded", () => {
   renderer.toneMappingExposure = 1.2;
   container.appendChild(renderer);
 
-  // Iluminación profesional
   const ambientLight = new THREE.AmbientLight(0xffffff, 0.8);
   scene.add(ambientLight);
 
@@ -343,11 +340,9 @@ document.addEventListener("DOMContentLoaded", () => {
   dirLight2.position.set(-5, -5, -5);
   scene.add(dirLight2);
 
-  // Contenedor principal para el modelo 3D
   const group = new THREE.Group();
   scene.add(group);
 
-  // Carga del modelo 3D real mediante GLTFLoader con ruta segura
   const loaderInstance = new THREE.GLTFLoader();
   const modelPath = './hydra_material/models/mannequin_v2.glb'; 
 
@@ -356,24 +351,20 @@ document.addEventListener("DOMContentLoaded", () => {
     (gltf) => {
       const model = gltf.scene;
       
-      // --- AUTO-CENTRAR Y ESCALAR EL MODELO CORRECTAMENTE ---
       const box = new THREE.Box3().setFromObject(model);
       const center = box.getCenter(new THREE.Vector3());
       const size = box.getSize(new THREE.Vector3());
 
-      // Centrar el origen del modelo
       model.position.x -= center.x;
       model.position.y -= center.y;
       model.position.z -= center.z;
 
-      // Ajustar la distancia de la cámara en base a las dimensiones reales del objeto
       const maxDim = Math.max(size.x, size.y, size.z);
       camera.position.set(0, maxDim * 0.5, maxDim * 2.5);
       camera.lookAt(0, 0, 0);
 
       group.add(model);
 
-      // Ocultar texto de carga una vez completado
       if (loader) {
         loader.style.opacity = "0";
         setTimeout(() => loader.remove(), 400);
@@ -391,7 +382,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   );
 
-  // Control interactivo de rotación con Mouse / Touch
   let isDragging = false;
   let previousMousePosition = { x: 0, y: 0 };
 
@@ -439,21 +429,18 @@ document.addEventListener("DOMContentLoaded", () => {
     isDragging = false;
   });
 
-  // Zoom con la rueda del mouse
   container.addEventListener("wheel", (e) => {
     e.preventDefault();
     camera.position.z += e.deltaY * 0.003;
     camera.position.z = Math.max(2.5, Math.min(9, camera.position.z));
   }, { passive: false });
 
-  // Loop de animación principal
   const clock = new THREE.Clock();
   function animate() {
     requestAnimationFrame(animate);
 
     const elapsedTime = clock.getElapsedTime();
 
-    // Rotación automática sutil cuando no se está arrastrando el modelo
     if (!isDragging) {
       group.rotation.y += 0.004;
       group.rotation.x = Math.sin(elapsedTime * 0.5) * 0.05;
@@ -463,7 +450,6 @@ document.addEventListener("DOMContentLoaded", () => {
   }
   animate();
 
-  // Responsive adaptativo ante cambios de tamaño de ventana
   window.addEventListener("resize", () => {
     const width = container.clientWidth;
     const height = container.clientHeight;
